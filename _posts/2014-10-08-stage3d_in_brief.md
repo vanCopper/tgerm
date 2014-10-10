@@ -1,6 +1,7 @@
 ---
 layout: post
 tag: [Stage3D, AS3]
+comments: true
 title: Stage3D in brief (译文)
 ---
 > 并非逐字翻译，感兴趣的朋友可直接访问下方的原文。
