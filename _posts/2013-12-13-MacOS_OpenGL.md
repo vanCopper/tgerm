@@ -25,7 +25,7 @@ tag: [OpenGL]
 
 5.右键单击&#8221;Frameworks&#8221;文件夹，添加&#8221;OpenGL.framework&#8221;和&#8221;GLUT.framework&#8221;(System/Library/Frameworks/GLUT.framework&OpenGL.framework)
 
-6.在Supporting Files中新建C++ Files 编写对应代码，编译运行
+6.在Supporting Files中新建C++ Files 编写对应代码，编译运行 
 
 ![image](../images//wp-content/uploads/2013/12/05-300x190.png)
 
