@@ -1,7 +1,7 @@
 ---
 layout: post
 comment: true
-excerpt: 艰难的是，你没办法做到不在乎别人的对你的评价。
+excerpt: 难的是，你没办法做到不在乎别人的对你的看法。
 title: 不讨好
 ---
 
