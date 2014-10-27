@@ -2,7 +2,7 @@
 layout: post
 comments: true
 excerpt:  标题略微有点大，就当做开篇吧。先把准备工作做个总结。
-title: Python Curses 服务器监控
+title: Python Curses 服务器监控（内存）
 ---
 准备写点服务器相关的东西，这算是个开篇。先把准备工作做好，好的工作流才是王道。
 
