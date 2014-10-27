@@ -19,3 +19,5 @@ _site/posts/index.html
 _site/sitemap.xml
 
 _site/theme-setup/index.html
+
+code/sftp-config.json
