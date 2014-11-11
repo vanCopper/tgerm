@@ -1,7 +1,7 @@
 ---
 layout: post
 tag: [Stage3D]
-title: Stage3D_AGAL
+title: Stage3D-AGAL
 ---
 前两篇涉及到AGAL的地方，都直接略过了。这里详细理解一下。
 
