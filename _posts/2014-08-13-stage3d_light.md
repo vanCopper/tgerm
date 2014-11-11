@@ -1,7 +1,7 @@
 ---
 layout: post
 tag: [Stage3D]
-title: Stage3D 光照
+title: Stage3D-光照
 ---
 ###光特性
 参考OpenGL的光照模型，把光分成4种独立的成分：
