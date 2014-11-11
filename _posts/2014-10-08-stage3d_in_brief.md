@@ -1,6 +1,6 @@
 ---
 layout: post
-tag: [Stage3D, AS3]
+tag: [Stage3D]
 comments: true
 title: Stage3D in brief (译文)
 ---
