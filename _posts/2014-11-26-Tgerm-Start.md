@@ -13,4 +13,4 @@ title: Tgerm-MarkDown 编辑器
 
 发文以督促自己坚持将该App完成。
 
-![image](../images/tgermMarkDown.png) 
+![image](../images/tgermMarkDown.png)  
