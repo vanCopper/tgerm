@@ -18,12 +18,12 @@ sass:
   style: compressed
 gems:
   - jekyll-sitemap
-  - jekyll-swfobject
+  # - jekyll-swfobject
 
-swfobject:
-  wmode: direct
-  height: 350
-  width: 200
+# swfobject:
+  # wmode: direct
+#   height: 350
+#   width: 200
 
 # maruku:
 #   use_tex:    false

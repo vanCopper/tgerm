@@ -8,4 +8,21 @@ title: Stage3D-Vertex Shader Morphing
 
 hahaahahaahh
 
-{% swfobject ../swf/Stage3DGuide.swf %}Flash Player required.{% endswfobject %}
+<div id="flashcontent"></div>
+<script type="text/javascript">
+var flashvars = {};
+var params = {wmode:'direct'};
+var attributes = {};
+swfobject.embedSWF(
+'../swf/Stage3DGuide.swf',
+'flashcontent',
+'800',
+'600',
+'14.0',
+null,
+flashvars,
+params,
+attributes,
+null
+);
+</script>
