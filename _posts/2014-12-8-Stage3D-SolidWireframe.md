@@ -3,7 +3,7 @@ layout: post
 comments: true
 excerpt:  SolidWireframe
 tag: [Stage3D]
-title: Stage3D-SolidWireframe（一）
+title: Stage3D-SolidWireframe
 ---
 用线框模式渲染模型是比较常用的调试方法。在DX和OpenGL中都内置了线框模式渲染。在Stage3D中，桌面（AIR）中是有这个线框渲染模式的。插件版，还是要自己写。
 
@@ -124,8 +124,8 @@ null
 );
 </script>
 
-###平滑
-可以明显看到线框的锯齿很严重，下一篇文章会讨论关于平滑。
+###锯齿
+可以明显看到线框是有锯齿的，关于反锯齿可参照下文中提供的算法。我实际测试了下，竟然还掉帧。既然是Debug用，有点锯齿也无妨了。
 
 ###参考资料
 > [Nvidia Developer:SolidWireframe](http://developer.download.nvidia.com/SDK/10.5/direct3d/Source/SolidWireframe/Doc/SolidWireframe.pdf)
