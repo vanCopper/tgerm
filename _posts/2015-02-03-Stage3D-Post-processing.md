@@ -24,6 +24,11 @@ title: Stage3D-Post-processing
 
 ![image](../images/postGrayscal.png)
 
+----
+**晚上到家没忍住又开机码字，加了一个效果。**
+
+![image](../images/waveEffect.gif)
+
 ###实现步骤
 其实不是很复杂，代码我已经提交至gitHub。原理也没什么要详细讲的。只说一下实现步骤：
 
