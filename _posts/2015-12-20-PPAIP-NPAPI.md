@@ -34,7 +34,7 @@ macworld.com
 
 统计下最新版本 **FP20**:
 
-![](../images/flash_player.jpg)
+![](../images/Flash_Player.jpg)
 
 可以看到**Chrome**以及**Chromium-based**为核心的浏览器均只有PPAPI架构的FlashPlayer。从Chrome官网更新日志中也可以看到Chrome42以后的版本正式停止NPAPI插件的支持，也就意味着Chrome42以后的版本只能运行PPAPI版本的FlashPlayer。FirFox也在官方正式确认将在2016年年底移除支持NPAPI插件，但仍对Adobe Flash继续提供支持。最新的FireFox里运行的FlashPlayer为Adobe与FireFox合作的定制版，对FlashPlayer插件提供一个**安全保护**模式，用户可自主选择关闭和开启，开启后会影响FlashPlayer运行性能。
 
