@@ -21,3 +21,8 @@ _site/sitemap.xml
 _site/theme-setup/index.html
 
 code/sftp-config.json
+_sass/.Ulysses-Group.plist
+
+_sass/vendor/.Ulysses-Group.plist
+
+.Ulysses-Group.plist
