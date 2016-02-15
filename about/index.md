@@ -11,5 +11,5 @@ comments: true
 ---
 
 * QQ: 四9二二14八10
-* Mail: vancopperm@gmail.com
+* Mail: vancopper@foxmail.com
 * Blog: blog.as3er.com,blog.copper3d.org
