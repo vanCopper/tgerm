@@ -13,14 +13,20 @@ permalink:   /:categories/:title/
 markdown_ext:  markdown,mkd,mkdn,md
 
 #highlighter: pygments
-markdown: kramdown
-kramdown:
-    input: GFM
-    toc_levels: 1..6
+#markdown: kramdown
+#kramdown:
+#    input: GFM
+#    toc_levels: 1..6
 
+# Build settings
+markdown: redcarpet
+markdown_ext:  markdown,mkdown,mkdn,mkd,md
 
 redcarpet:
-  extensions: [fenced_code_blocks]
+  extensions: ["tables", "autolink", "strikethrough", "space_after_headers", "with_toc_data", "fenced_code_blocks"]
+
+#redcarpet:
+#  extensions: [fenced_code_blocks]
 
 sass:
   sass_dir: _sass
