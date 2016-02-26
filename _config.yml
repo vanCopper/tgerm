@@ -16,6 +16,7 @@ markdown_ext:  markdown,mkd,mkdn,md
 markdown: kramdown
 kramdown:
     input: GFM
+    toc_levels: 1..6
 
 
 redcarpet:
