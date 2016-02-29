@@ -13,7 +13,7 @@ permalink:   /:categories/:title/
 markdown_ext:  markdown,mkd,mkdn,md
 
 #highlighter: pygments
-markdown: kramdown
+# markdown: kramdown
 # kramdown:
 #     input: GFM
 
