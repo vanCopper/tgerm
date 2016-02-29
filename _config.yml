@@ -9,20 +9,25 @@ baseurl:              "/"
 # Jekyll configuration
 
 permalink:   /:categories/:title/
-markdown:    kramdown
+#markdown:    kramdown
 markdown_ext:  markdown,mkd,mkdn,md
 
 #highlighter: pygments
-redcarpet:
-  extensions:
-    - with_toc_data
-    - html_toc
+markdown: kramdown
+# kramdown:
+#     input: GFM
+
+
+
+# redcarpet:
+#   extensions: [fenced_code_blocks]
 
 sass:
   sass_dir: _sass
   style: compressed
 gems:
   - jekyll-sitemap
+  - jekyll-toc
   # - jekyll-swfobject
 
 # swfobject:

@@ -3,11 +3,11 @@ layout: post
 comments: true
 excerpt:  
 tag: [Swift]
+toc: true
 title: (译）Start Developing iOS Apps(Swift)
 ---
 
-* TOC
-  {:toc}
+
 
 ### Getting Started
 
