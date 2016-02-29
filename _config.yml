@@ -27,7 +27,7 @@ sass:
   style: compressed
 gems:
   - jekyll-sitemap
-  - jekyll-toc
+  # - jekyll-toc
   # - jekyll-swfobject
 
 # swfobject:
