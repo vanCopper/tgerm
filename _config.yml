@@ -13,9 +13,10 @@ permalink:   /:categories/:title/
 markdown_ext:  markdown,mkd,mkdn,md
 
 #highlighter: pygments
-markdown: redcarpet
 redcarpet:
-  extensions: ["fenced_code_blocks", "autolink", "tables", "strikethrough", "with_toc_data"]
+  extensions:
+    - with_toc_data
+    - html_toc
 
 sass:
   sass_dir: _sass
