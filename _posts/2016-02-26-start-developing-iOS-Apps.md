@@ -6,7 +6,8 @@ tag: [Swift]
 title: (译）Start Developing iOS Apps(Swift)
 ---
 
-[TOC]
+* TOC
+  {:toc}
 
 ### Getting Started
 

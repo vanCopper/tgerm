@@ -9,7 +9,7 @@ baseurl:              "/"
 # Jekyll configuration
 
 permalink:   /:categories/:title/
-#markdown:    kramdown
+markdown:    kramdown
 markdown_ext:  markdown,mkd,mkdn,md
 
 #highlighter: pygments
