@@ -4,6 +4,50 @@
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
+    <style type="text/css">
+.md-toc { 
+  /*background: #eee;*/
+  /*font-size: 10px;*/
+  padding: 0em 2em 1em 1em;
+  margin: 0 0 0.5em 0.5em;
+  /*background:#fff;*/
+  /*border:0;*/
+  /*outline:0;*/
+  box-shadow:0 6px 12px rgba(0,0,0,0.35);
+  position:absolute;
+  /*position: relative;*/
+  left:0.5%;
+  top:50%;
+  border-top-left-radius: 10px; 
+  border-top-right-radius: 10px; 
+  border-bottom-right-radius: 10px; 
+  border-bottom-left-radius: 10px; 
+}
+.md-toc-content { 
+  position: relative; 
+  margin-left: 0px; 
+}
+.md-toc::after, 
+.md-toc-content::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: bold; }
+.md-toc-h2 .md-toc-inner { margin-left: 0em; }
+.md-toc-h3 .md-toc-inner { margin-left: 1em; }
+.md-toc-h4 .md-toc-inner { margin-left: 2em; }
+.md-toc-h5 .md-toc-inner { margin-left: 3em; }
+.md-toc-h6 .md-toc-inner { margin-left: 4em; }
+.md-toc-h6 { margin-left: 5em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 8em; }
+  .md-toc-h6 { margin-left: 9.5em; }
+}
+a.md-toc-inner { color: inherit; font-size: inherit; font-style: inherit; font-weight: inherit; text-decoration: inherit; line-height: inherit; }
+</style>
 {% include _head.html %}
  <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
@@ -17,7 +61,47 @@
 
  <script type="text/javascript">
 $(document).ready(function() {
-    $('#toc').toc();
+  // return
+  var get_level = function(ele) { return parseInt(String(ele).replace("h", ""), 10); }
+  var headers = $('h1, h2, h3, h4, h5, h6').filter(function() {
+      // get all headers with an ID
+      var previousSiblingName = $(this).prev().attr( "name" );
+      if (!this.id && previousSiblingName) {
+        this.id = $(this).attr( "id", previousSiblingName.replace(/\./g, "-") );
+      }
+      return this.id;
+    }), output = $(this);
+    // if (!headers.length || headers.length < settings.minimumHeaders || !output.length) {
+    //   $(this).hide();
+    //   return;
+    // }
+    var newHtml = '<p class="md-toc-content">'
+    headers.each(function(i,item){
+    var tag = $(item).get(0).localName;
+    var level = String(get_level(tag));
+    $(item).attr("id","wow"+level);
+
+    newHtml += '<span class="md-toc-item md-toc-h' + level + '"> <a class="md-toc-inner" href="#wow' + level + '">'+ $(this).text()+'</a></span>';
+    // $("#toc").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
+    // $(".newh2").css("margin-left",0);
+    // $(".newh3").css("margin-left",20);
+    // $(".newh4").css("margin-left",40);
+    // $(".newh5").css("margin-left",60);
+    // $(".newh6").css("margin-left",80);
+    });
+    newHtml += '</p>';
+    $("#toc").append(newHtml);
+    // $('#toc').toc();
+    // $("h2,h3,h4,h5,h6").each(function(i,item){
+    //     var tag = $(item).get(0).localName;
+    //     $(item).attr("id","wow"+i);
+    //     $("#toc").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
+    //     $(".newh2").css("margin-left",0);
+    //     $(".newh3").css("margin-left",20);
+    //     $(".newh4").css("margin-left",40);
+    //     $(".newh5").css("margin-left",60);
+    //     $(".newh6").css("margin-left",80);
+    //   });
 });
 </script>
 
@@ -46,8 +130,10 @@ $(document).ready(function() {
   {% endif %}
   </div><!-- /.image-wrap -->
 {% endif %}
+<!-- <div id="md-toc" class="md-toc"></div> -->
 
 <div id="main" role="main">
+
   <div class="article-author-side">
     {% include _author-bio.html %}
   </div>
@@ -61,7 +147,7 @@ $(document).ready(function() {
     </div><!--/ .headline-wrap -->
     <!-- <div id="toc"></div> -->
     <div class="article-wrap">
-      
+      <div class='md-toc' id='toc'></div>
       {{ content }}
       <hr />
       <footer role="contentinfo">
