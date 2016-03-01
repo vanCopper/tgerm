@@ -26,10 +26,14 @@
 .md-toc-content { 
   position: relative; 
   margin-left: 0px; 
+  margin-top: 10px;
 }
 .md-toc::after, 
 .md-toc-content::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); text-decoration: none; }
+.md-toc-item { 
+  display: block; 
+  color: rgb(65, 131, 196); 
+  text-decoration: none; }
 .md-toc-inner:hover { text-decoration: underline; }
 .md-toc-inner { display: inline-block; cursor: pointer; }
 .md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: bold; }
@@ -131,7 +135,7 @@ $(document).ready(function() {
   </div><!-- /.image-wrap -->
 {% endif %}
 <!-- <div id="md-toc" class="md-toc"></div> -->
-
+ <div class='md-toc' id='toc'></div>
 <div id="main" role="main">
 
   <div class="article-author-side">
@@ -147,7 +151,7 @@ $(document).ready(function() {
     </div><!--/ .headline-wrap -->
     <!-- <div id="toc"></div> -->
     <div class="article-wrap">
-      <div class='md-toc' id='toc'></div>
+     
       {{ content }}
       <hr />
       <footer role="contentinfo">
