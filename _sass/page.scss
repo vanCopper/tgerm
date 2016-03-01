@@ -2,6 +2,7 @@ body {
 	background-color: $bodycolor;
 	font-family: $base-font;
 	color: $text-color;
+	line-height: 1.6;
 }
 .navigation-wrapper {
 	@include container;
