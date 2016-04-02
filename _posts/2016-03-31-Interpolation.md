@@ -15,21 +15,10 @@ title: Interpolation 插值
 
 假如我们需要将物体X通过N步从A点移动到B点，可以使用下面的代码：
 
-{% highlight as3 %}
-
-for(i = 0; i < N; i++)
-{    
-	X = ((A * i) + (B * (N - i))) / N;
-}
-
-{% endhighlight %}
-
-
-
 ```c#
 for(i = 0; i < N; i++)
 {    
-X = ((A * i) + (B * (N - i))) / N;
+   X = ((A * i) + (B * (N - i))) / N;
 }
 ```
 
