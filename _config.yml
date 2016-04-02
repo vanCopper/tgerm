@@ -17,7 +17,7 @@ markdown: kramdown
 kramdown:
     # input: GFM
     # smart_quotes:   lsquo,rsquo,ldquo,rdquo
-  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  # smart_quotes: lsquo,rsquo,ldquo,rdquo
   use_coderay: true
 
   # coderay:
