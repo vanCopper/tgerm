@@ -12,13 +12,13 @@ permalink:   /:categories/:title/
 # markdown:    kramdown
 markdown_ext:  markdown,mkd,mkdn,md
 
-# highlighter: pygments
+highlighter: rouge
 markdown: kramdown
-kramdown:
+# kramdown:
     # input: GFM
     # smart_quotes:   lsquo,rsquo,ldquo,rdquo
   # smart_quotes: lsquo,rsquo,ldquo,rdquo
-  use_coderay: true
+  # use_coderay: true
 
   # coderay:
   #   coderay_wrap: div
