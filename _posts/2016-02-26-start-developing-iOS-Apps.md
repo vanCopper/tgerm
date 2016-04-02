@@ -24,7 +24,173 @@ title: (译）Start Developing iOS Apps(Swift)
 
 ![](../images/8_sim_navbar_2x.png)
 
-接下来的第一课内容是通过_playground_来熟悉一些基础知识。*playground*是运行在Xcode中的一种所见即所得的文件，你可以实时看到_playground_中**Swift**代码执行的结果。剩下的课程就是教你一步一步的完成这个App。
+接下来的第一课内容是通过*playground*来熟悉一些基础知识。*playground*是运行在Xcode中的一种所见即所得的文件，你可以实时看到*playground*中**Swift**代码执行的结果。剩下的课程就是教你一步一步的完成这个App。
 
 #### Get the Tools
+
+首先你得有一台苹果电脑（当然黑苹果也行），系统版本最好是OS X 10.10以后的，因为你要用最新版本的Xcode。本课程所有例子均基于Xcode 7.0&iOS SDK 9.0。
+
+**从App Store免费下载Xcode**
+
+1. 在你的Mac中找到App Store应用程序（如果你找不到的话，可以关闭此页面，该打游戏打游戏，该撩妹的去撩妹）。
+2. 在App Store应用程序的搜索框中输入*xcode*,然后按下回车键。*Xcode*将出现在搜索结果中。
+3. 点击获取，然后点击安装。
+4. 输入你的Apple ID和密码，*Xcode*下载完成后将出现在你的*/Applications*文件夹内。
+
+###Learn the Essentials of Swift
+
+这第一课将用*Swift playground*带你熟悉Swift的相关知识。
+
+> Note
+>
+> 在Xcode中打开本课程的playground。
+>
+> [Download Playground](https://developer.apple.com/sample-code/swift/downloads/Start-Dev-iOS-Apps-01.zip)
+
+####Learning Objectives
+
+这节课结束后，你将get的知识：
+
+* 理解**常量**与**变量**的区别
+*  学习何时是使用隐式声明，何时使用显式声明
+* 理解可选类型以及可选绑定的优势
+* 区分可选类型和可选隐式可选类型
+* 理解条件语句和循环语句
+* 使用**switch**语句控制流程
+* 使用**where**语句添加约束条件
+* 理解**functions**,**methods**以及**initializers**
+* 理解**classes**,**structures**以及**enumerations**
+* 理解继承以及实现的语法
+* 使用Xcode的快速帮助
+* 导入并使用**UIKit**
+
+####Basic Types
+
+常量必须在你声明时就赋值，并且不会再改变。变量则在你声明后可改变其值。
+
+使用*let*定义常量，使用*var*定义变量：
+
+{% highlight swift %}
+
+var myVariable = 42
+
+myVariable = 50
+
+let myConstant = 42
+
+{% endhighlight %}
+
+每个常量，变量在Swift中都是有类型的，但你不一定要显式的声明其类型。上面的例子中编译器会推断*myVariable*是 integer类型，这称作类型推断。一旦你声明了变量或者常量的数据类型，那么将无法修改其类型。
+
+如果初始的值无法为类型推断提供足够的信息（或者没有初始值），那么可以在变量名后添加分号并写明类型。
+
+{% highlight swift %}
+
+let implicitInteger = 70
+
+let implicitDouble = 70.0
+
+let explicitDouble: Double = 70
+
+{% endhighlight %}
+
+> EXPERIMENT
+>
+> 在xCode中，按住Option键单击某个变量，可以查看该变量的类型等详细信息。
+
+变量是可以执行类型转换的，如下将integer类型的width转换为String类型。
+
+{% highlight swift %}
+
+let label = "The width is"
+let width = 94
+let widthLabel = label + String(width)
+
+{% endhighlight %}
+
+> EXPERIMENT
+>
+> 可以尝试将*String*移除，看会得到什么错误。
+
+这里有种简单的方式\\()来完成字符串转换。
+
+{% highlight swift %}
+
+let apples = 3
+
+let oranges = 5
+
+let appleSummary = "I have \\(apples) apples."
+
+let fruitSummary = "I have \\(apples + oranges) pieces of fruit."
+
+{% endhighlight %}
+
+可以使用[optionals](https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW11)来定义一个可能会出现空值的变量。如果你定义的变量或者常量会出现*nil*值，那么定义是就需要在类型后面添加*?*来标识变量或者常量为*optionals*。
+
+{% highlight swift %}
+
+let optionalInt: Int? = 9
+
+{% endhighlight %}
+
+当你确定一个使用*?*定义的变量或常量的值不为*nil*时，可以使用*!*来对此变量或常量进行解析后取值。
+
+{% highlight swift %}
+
+let actualInt: Int = optionallInt!
+
+{% endhighlight %}
+
+*Optionals*在Swift中非常常见，而且非常有用。
+
+{% highlight swift %}
+
+var myString = "7"
+
+var possibleInt = Int(myString)
+
+print(possibleInt)
+
+{% endhighlight %}
+
+在上面的代码中，*possibleInt*的值为*7*，因为myString包含一个有效的可转换的*Int*值*7*。如果我们把*myString*的值换成“banana",那么就无法转换为有效的*Int*值，最终*possibleInt*的值为*nil*。
+
+{% highlight swift %}
+
+myString = "banana"
+
+possibleInt = Int(myString)
+
+print(possibleInt)
+
+{% endhighlight %}
+
+[array](https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW28)(数组还是元组？我见有网友翻译成元组）是一组有序的，包含了若干数据的集合。创建数组使用([]).可以通过索引来访问数组内的元素。数组的开始索引为*0*。
+
+{% highlight swift %}
+
+var ratingList = ["Poor", "Fine", "Good", "Excellent"]
+
+ratingList[1] = "OK"
+
+ratingList
+
+{% endhighlight %}
+
+可以使用initializer来创建一个空的制定类型的数组。稍后会有更多关于initializer的介绍。
+
+{% highlight swift %}
+
+//Create an empty array.
+
+let emptyArray = [String]()
+
+{% endhighlight %}
+
+看到上面代码中的注释了吗？没错，*//*用于单行注释，/\*…*/代表多行注释。
+
+
+
+
 

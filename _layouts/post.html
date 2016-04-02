@@ -83,9 +83,9 @@ $(document).ready(function() {
     headers.each(function(i,item){
     var tag = $(item).get(0).localName;
     var level = String(get_level(tag));
-    $(item).attr("id","wow"+level);
+    $(item).attr("id","wow"+level+""+i);
 
-    newHtml += '<span class="md-toc-item md-toc-h' + level + '"> <a class="md-toc-inner" href="#wow' + level + '">'+ $(this).text()+'</a></span>';
+    newHtml += '<span class="md-toc-item md-toc-h' + level + '"> <a class="md-toc-inner" href="#wow' + level + '' + i + '">'+ $(this).text()+'</a></span>';
     // $("#toc").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
     // $(".newh2").css("margin-left",0);
     // $(".newh3").css("margin-left",20);

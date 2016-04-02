@@ -9,13 +9,23 @@ baseurl:              "/"
 # Jekyll configuration
 
 permalink:   /:categories/:title/
-#markdown:    kramdown
+# markdown:    kramdown
 markdown_ext:  markdown,mkd,mkdn,md
 
-#highlighter: pygments
-# markdown: kramdown
-# kramdown:
-#     input: GFM
+# highlighter: pygments
+markdown: kramdown
+kramdown:
+    # input: GFM
+    # smart_quotes:   lsquo,rsquo,ldquo,rdquo
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  use_coderay: true
+
+  # coderay:
+  #   coderay_wrap: div
+  #   coderay_line_numbers: nil
+  #   coderay_tab_width: 4
+  #   coderay_bold_every: 10
+  #   coderay_css: class
 
 
 
