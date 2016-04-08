@@ -7,7 +7,7 @@ title: Interpolation 插值
 
 #### 插值
 
-在离散数据的基础上补差连续函数，使得这条连续曲线通过全部的离散数据点。插值是离散函数逼近的重要方法，利用它可通过函数在有限个点处的取值状况，估算出函数在其他点处的近似值。
+在离散数据的基础上补差连续函数，使得这条连续曲线通过全部的离散数据点。插值是离散函数逼近的重要方法，利用它可通过函数在有限个点处的取值状况，估算出函数在其他点处的近似值  。
 
 插值比较常用在骨骼动画，物体移动，灯光渐隐，摄像机动画，图形渲染中。
 
@@ -172,7 +172,7 @@ float catmullrom(float t, float p0, float p1, float p2, float p3)
         (-p0 + 3 * p1 - 3 * p2 + p3) * t * t * t
     );
 }
- 
+
 for (i = 0; i < N; i++)
 {
     v = i / N;
@@ -196,4 +196,3 @@ for (i = 0; i < N; i++)
 - [Hermite Curve Interpolation by Nils Pipenbrinck](http://www.cubic.org/docs/hermite.htm)
 - [Tweening by Robert Penner (PDF link)](http://www.robertpenner.com/easing/penner_chapter7_tweening.pdf)
 - [Easing Equations by Robert Penner](http://www.gizma.com/easing/)
-
