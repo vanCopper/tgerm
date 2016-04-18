@@ -80,6 +80,7 @@ $(document).ready(function() {
                 return;
                }
 
+  var isToc = false;
   // return
   var get_level = function(ele) { return parseInt(String(ele).replace("h", ""), 10); }
   var headers = $('h1, h2, h3, h4, h5, h6').filter(function() {
@@ -94,8 +95,10 @@ $(document).ready(function() {
     //   $(this).hide();
     //   return;
     // }
+
     var newHtml = '<p class="md-toc-content">'
     headers.each(function(i,item){
+    isToc = true;
     var tag = $(item).get(0).localName;
     var level = String(get_level(tag));
     $(item).attr("id","wow"+level+""+i);
@@ -121,7 +124,15 @@ $(document).ready(function() {
     //     $(".newh5").css("margin-left",60);
     //     $(".newh6").css("margin-left",80);
     //   });
+    if(!isToc)
+    {
+      var divToc = document.getElementById("toc");
+
+      divToc.parentNode.removeChild(divToc);
+    }
 });
+
+
 </script>
 
 <script type="text/javascript"
