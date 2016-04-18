@@ -37,7 +37,7 @@ title: (译）Start Developing iOS Apps(Swift)
 3. 点击获取，然后点击安装。
 4. 输入你的Apple ID和密码，*Xcode*下载完成后将出现在你的*/Applications*文件夹内。
 
-###Learn the Essentials of Swift
+### Learn the Essentials of Swift
 
 这第一课将用*Swift playground*带你熟悉Swift的相关知识。
 
@@ -52,7 +52,7 @@ title: (译）Start Developing iOS Apps(Swift)
 这节课结束后，你将get的知识：
 
 * 理解**常量**与**变量**的区别
-*  学习何时是使用隐式声明，何时使用显式声明
+* 学习何时是使用隐式声明，何时使用显式声明
 * 理解可选类型以及可选绑定的优势
 * 区分可选类型和可选隐式可选类型
 * 理解条件语句和循环语句
@@ -184,13 +184,52 @@ ratingList
 
 //Create an empty array.
 
-let emptyArray = [String]()
+let emptyArray = *[String]()*
 
 {% endhighlight %}
 
 看到上面代码中的注释了吗？没错，*//*用于单行注释，/\*…*/代表多行注释。
 
+#### Control Flow
 
+流程控制这对程序员来说喜闻乐见了。Swift有两种流程控制，*if* 和*switch*。当流程语句中条件为*true*时则会执行。循环语句则有*for-in*和*while*。
+
+{% highlight swift %}
+
+let number = 23
+if number < 10 {
+    print("The number is small")
+} else if number > 100 {
+    print("The number is pretty big")
+} else {
+    print("The number is between 10 and 100")
+}
+
+{% endhighlight %}
+
+**我决定略过语法部分了。。。都是些简单但又繁琐的东西。**
+
+### Build a Basic UI
+
+这节课就开始有意思了，首先你会接触到xCode，然后你需要熟悉各种组件。并且开始编写**FoodTracker**这个牛逼闪闪的App。
+
+![](../images/2_sim_finalUI_2x.png)
+
+#### Learning Objectives
+
+本节结束，可以了解到：
+
+* 在Xcode中创建project
+* 通过Xcode的模板创建包含确定方法的文件
+* 在Xcode中打开切换文件
+* 在Simulator中运行app
+* 在storyboard中添加，移动，重新布局UI元素
+* 在storyboard中利用Attributes inspector来修改UI元素的属性
+* 在outline view中查看并整理UI元素
+* 利用Preview assistant预览storyboard中的UI
+* 利用Auto Layout来自动布局UI
+
+#### Create a New Project
 
 
 
