@@ -181,6 +181,18 @@ $(document).ready(function() {
       {{ content }}
       <hr />
       <footer role="contentinfo">
+        <b> 扫码分享该文</b>
+        <div id="qrcode"></div>
+        <script type="text/javascript">
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: location.href,
+            width: 128,
+            height: 128,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+        </script>
         <div class="article-author-bottom">
           {% include _author-bio.html %}
         </div>
@@ -189,6 +201,7 @@ $(document).ready(function() {
         <!-- <img src="../images/alipay.png" align="middle"/> -->
       </footer>
     </div><!-- /.article-wrap -->
+
   {% if site.owner.disqus-shortname and page.comments == true %}
     <section id="disqus_thread"></section><!-- /#disqus_thread -->
   {% endif %}
