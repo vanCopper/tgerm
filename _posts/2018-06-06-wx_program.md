@@ -6,11 +6,11 @@ tag: []
 title: 微信小程序-蹭饭早知道
 ---
 
-![](/Users/vancopper/Documents/tgerm/images/wx_02.jpeg)
+![](../images/wx_02.jpeg)
 
-![](/Users/vancopper/Documents/tgerm/images/wx_01.jpeg)
+![](../images/wx_01.jpeg)
 
-![](/Users/vancopper/Documents/tgerm/images/wx_03.jpg)
+![](../images/wx_03.jpg)
 
 #### 最初的构思
 
