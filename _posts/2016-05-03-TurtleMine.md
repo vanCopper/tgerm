@@ -5,6 +5,8 @@ tag: [work]
 title: 利用TurtleMine同步Redmine issue
 ---
 
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
+
 目前项目中bug以及日常功能开发均利用Redmine来进行跟踪管理，要求开发人员每次代码提交必须以Redmine上的一条bug或者功能为整体提交，并在日志中填写对应Redmine上的单号和描述。这么做可以更好的协调分支与主干的代码合并，和任务追踪。但不方便的地方就是每次都要手动从Redmine上来复制单号现的非常繁琐。TurtleMine是TrotoiseSVN的插件，安装后可在TrotoiseSVN中直接拉取到Redmine上的数据，并写入日志。这就方便了很多。
 
 #### Install

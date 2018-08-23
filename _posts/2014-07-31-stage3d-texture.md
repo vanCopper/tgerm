@@ -3,6 +3,8 @@ layout: post
 tag: [Stage3D]
 title: Stage3D-Texture
 ---
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
+
 前一篇了解了如何渲染一个颜色填充的三角形。这篇先来理解一下** 纹理（texture）**或** 纹理贴图（texture map)**，以及如何创建，上传以及渲染**texture**。
 
 当我们把图像数据应用到一个几何图形上时，我们称之为**texture**或**texture map**。整过程就是将图像上的每个点对应到几何图形上的每个点。这里又会牵扯到一个新的概念**UV坐标**。
@@ -98,20 +100,20 @@ public class TextureTest extends Sprite
 
     private var _vertexBuffer:VertexBuffer3D;
     private var _indexBuffer:IndexBuffer3D;
-
+    
     private var _program3d:Program3D;
-
+    
     private var _texture:Texture;
-
+    
     [Embed(source="./assets/floor_diffuse.jpg")]
     private static var TextureClass:Class;
-
+    
     public function TextureTest()
     {
         super();
         addEventListener(Event.ADDED_TO_STAGE, onAddToStage);
     }
-
+    
     private function onAddToStage(e:Event):void
     {
         removeEventListener(Event.ADDED_TO_STAGE, onAddToStage);
@@ -123,29 +125,29 @@ public class TextureTest extends Sprite
             _stage3d.requestContext3D(Context3DRenderMode.AUTO, Context3DProfile.STANDARD);
         }
     }
-
+    
     private function onContext3DCreated(event:Event):void
     {
         initContext3D();
         initBuffer();
         initTexture();
         initProgram();
-
+    
         addEventListener(Event.ENTER_FRAME, render);
     }
-
+    
     private function render(event:Event):void
     {
         _context3d.clear(0, 0, 0);
         _context3d.drawTriangles(_indexBuffer);
         _context3d.present();
     }
-
+    
     private function onCreateContext3DError(event:ErrorEvent):void
     {
         trace(event.text);
     }
-
+    
     private function initContext3D():void
     {
         _context3d = _stage3d.context3D;
@@ -153,7 +155,7 @@ public class TextureTest extends Sprite
         _stage3d.y = 50;
         _context3d.configureBackBuffer(700, 500, 2);
     }
-
+    
     private function initBuffer():void
     {
         var vertexData:Vector.<Number> = Vector.<Number>(
@@ -164,23 +166,23 @@ public class TextureTest extends Sprite
                 0.5, -0.5, 0, 1, 1,
                 -0.5, -0.5, 0, 0, 1
             ]);
-
+    
         var indexData:Vector.<uint> = Vector.<uint>(
             [0, 1, 2, 2, 3, 0]);
-
+    
         _vertexBuffer = _context3d.createVertexBuffer(vertexData.length/5, 5);
         _vertexBuffer.uploadFromVector(vertexData, 0, vertexData.length/5);
-
+    
         _indexBuffer = _context3d.createIndexBuffer(indexData.length);
         _indexBuffer.uploadFromVector(indexData, 0, indexData.length);
     }
-
+    
     private function initTexture():void
     {
         _texture = _context3d.createTexture(512, 512, Context3DTextureFormat.BGRA, true);
         _texture.uploadFromBitmapData((new TextureClass() as Bitmap).bitmapData);
     }
-
+    
     private function initProgram():void
     {
         var vertexSrc:String = "mov op, va0\n" +
@@ -189,14 +191,14 @@ public class TextureTest extends Sprite
             "mov oc ft0\n";
         var shaderAssembler:AGALMiniAssembler = new AGALMiniAssembler();
         _program3d = shaderAssembler.assemble2(_context3d, 2, vertexSrc, fragmentsrc);
-
+    
         _context3d.setVertexBufferAt(0, _vertexBuffer, 0,
             Context3DVertexBufferFormat.FLOAT_3);
         _context3d.setVertexBufferAt(1, _vertexBuffer, 3,
             Context3DVertexBufferFormat.FLOAT_2);
         _context3d.setTextureAt(0, _texture);
         _context3d.setProgram(_program3d);
-
+    
     }
 
 }

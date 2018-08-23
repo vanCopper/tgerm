@@ -5,6 +5,8 @@ excerpt:  实现一个方便灵活的Camera3D
 tag: [Stage3D]
 title: Stage3D-Game Camera
 ---
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
+
 前段时间弄了几篇关于**Stage3D**的文章，每次写例子都要码半天。花时间写了一个小的库，以方便写测试例子。 代码很少，所以基本上也没什么注释。 
 
 > GitHub:[https://github.com/vanCopper/Stage3DGuide]( https://github.com/vanCopper/Stage3DGuide)
@@ -92,7 +94,7 @@ package com
 	
 	import flash.geom.Matrix3D;
 	import flash.geom.Vector3D;
-	
+
 
 	/**
 	 * Camera3D
@@ -123,8 +125,9 @@ package com
 		public var viewHeight:Number = 600;
 		public var near:Number = 0.02;
 		public var far:Number = 100;
-		
-		
+
+
+​		
 		public var projectionMatrix:PerspectiveMatrix3D = new PerspectiveMatrix3D();
 		private var _viewMatrix:Matrix3D = new Matrix3D();	
 		
@@ -153,7 +156,7 @@ package com
 			
 			camPos = _transformationMatrix.transformVector(camForward);
 			camPos.scaleBy(-distance);
-			
+
 //			camPos = camPos.add(camTarget);
 		}
 		
@@ -245,12 +248,12 @@ package com
 			WV.w = 1.0;
 			a.copyFrom(WV);
 		}
-
+	
 		public function get distance():Number
 		{
 			return _distance;
 		}
-
+	
 		public function set distance(value:Number):void
 		{
 			_distance = value;

@@ -4,6 +4,8 @@ tag: [Stage3D]
 comments: true
 title: Stage3D in brief (译文)
 ---
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
+
 > 并非逐字翻译，感兴趣的朋友可直接访问下方的原文。
 
 hi，各位。本文是我在使用Stage3D的基础上，总结的一些使用经验。虽然很都是很小的细节，但很重要的。

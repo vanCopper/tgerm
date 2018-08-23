@@ -5,9 +5,11 @@ excerpt:  关于Flash Worker安全沙箱错误问题
 tag: [Stage3D]
 title: Flash Worker Sandbox
 ---
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
+
 上个项目利用Flash Worker做了文件解析，很大程度上解决了第一次进场景帧频较低的问题。前几天朋友遇到了利用Worker加载文件出现安全沙箱的问题。我自己写例子测试了一下，问题的确存在。而且尝试了各种方法后依然未能解决。这可能是FlashPlayer本身的机制所导致的问题。
 
-####问题
+#### 问题
 利用worker加载并解析文件，在FlashBuilder的调试环境下，加载本地文件会出现安全沙箱错误，提示远程SWF无法加载本地文件。但放到网络环境下就不会出现这个问题。
 
 *workerTest.as*
@@ -150,7 +152,7 @@ LoadWorker::: remote
 
 可以看到就算用loader把worker再加载一遍，当创建Worker的时候，Worker对应的swf安全沙箱依然为*remote*
 
-####解决
+#### 解决
 如果哪位网友知道如何解决这个问题，希望能留言告诉我。
 
 参考：

@@ -5,6 +5,8 @@ excerpt:  The Simplest AI Trick
 tag: [Stage3D]
 title: The Simplest AI Trick
 ---
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
+
 > 参考资料：[GDC Vault - The Simplest AI Trick in the Book](http://www.gdcvault.com/play/1020104/The-Simplest-AI-Trick-in)
 
 好久没有更新博客了，好像没有什么动力写文了。项目中的怪的AI是完全放在服务端的，经常看到怪会叠在一起，就想看看有没有什么既简单又不重叠的做法。本不是该我操心的事，我就是爱管闲事啊。噼里啪啦写了个简单Demo。

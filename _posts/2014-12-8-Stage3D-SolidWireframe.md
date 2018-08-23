@@ -5,16 +5,18 @@ excerpt:  SolidWireframe
 tag: [Stage3D]
 title: Stage3D-SolidWireframe
 ---
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
+
 用线框模式渲染模型是比较常用的调试方法。在DX和OpenGL中都内置了线框模式渲染。在Stage3D中，桌面（AIR）中是有这个线框渲染模式的。插件版，还是要自己写。
 
-###原理
+### 原理
 实现原理就是用一个颜色值填充靠近三角形三个边的像素点。实现步骤：
 
 1. 对于单个三角，分别计算点到对边的距离，并上传至显卡。因为Stage3D是没有Geometry Shader，所以这一步需要在AS里面做预计算。
 2. 在片段着色器中，取三点到对边距离最短的距离，作为标准参考值。
 3. 如果距离足够靠近边缘，就填充。否则，丢弃。
 
-###实现
+### 实现
 
 **分别计算三点到对边的距离**
 
@@ -124,10 +126,10 @@ null
 );
 </script>
 
-###锯齿
+### 锯齿
 可以明显看到线框是有锯齿的，关于反锯齿可参照下文中提供的算法。我实际测试了下，竟然还掉帧。既然是Debug用，有点锯齿也无妨了。
 
-###参考资料
+### 参考资料
 > [Nvidia Developer:SolidWireframe](http://developer.download.nvidia.com/SDK/10.5/direct3d/Source/SolidWireframe/Doc/SolidWireframe.pdf)
 
 > [Stage3D Wireframe](http://volgogradetzzz.blogspot.com/2012/06/wireframe-shader.html)

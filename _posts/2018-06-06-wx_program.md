@@ -4,7 +4,10 @@ comments:
 excerpt:  写App的乐趣就在于，我一个人搞定了所有。不需要扯皮，不需要妥协。
 tag: []
 title: 微信小程序-蹭饭早知道
+
 ---
+
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
 
 ![](../images/wx_02.jpeg)
 

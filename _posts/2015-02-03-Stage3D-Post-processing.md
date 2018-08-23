@@ -5,6 +5,8 @@ excerpt:  Stage3D Post-processing
 tag: [Stage3D]
 title: Stage3D-Post-processing
 ---
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
+
 > 2015年第一篇博客竟然还是拖到了2月份。但好歹还是挤出了这么一篇。
 
 **Post-processing**直译一下就是后期处理。理解一下就是对已经渲染完成的场景进行再处理。再处理其实就是对渲染完成的场景加一下滤镜，比较常用的滤镜：

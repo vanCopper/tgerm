@@ -4,6 +4,8 @@ tag: [Stage3D]
 title: Stage3D-3D世界
 ---
 
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
+
 先来理解一个重要的概念**矩阵**。
 ActionScript3中提供了**矩阵**的类：[Matrix3D](http://help.adobe.com/zh_CN/FlashPlatform/reference/actionscript/3/flash/geom/Matrix3D.html)
 
@@ -177,14 +179,14 @@ private function render(event:Event):void
     _cameraMatrix.identity();
     _cameraMatrix.appendTranslation(0, 0, -5);
     _cameraMatrix.appendRotation(_degrees, Vector3D.Z_AXIS);
-
+    
     _viewMatrix.identity();
     _viewMatrix.append(_modelMatrix);
     _viewMatrix.append(_cameraMatrix);
     _viewMatrix.append(_projectionmatrix);
-
+    
     _context3d.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, 0, _viewMatrix, true);
-
+    
     _context3d.clear(0, 0, 0);
     _context3d.drawTriangles(_indexBuffer);
     _context3d.present();
@@ -205,10 +207,10 @@ private function initContext3D():void
     _projectionmatrix = new PerspectiveMatrix3D();
     // 45 degrees FOV, 700/500 aspect ratio, 0.1=near, 100=far
     _projectionmatrix.perspectiveFieldOfViewRH(45.0, 700 / 500, 0.01, 100.0);
-
+    
     _cameraMatrix = new Matrix3D();
     _cameraMatrix.appendTranslation(0, 0, -5);
-
+    
     _viewMatrix = new Matrix3D();
 }
 
@@ -225,10 +227,10 @@ private function initBuffer():void
 
     var indexData:Vector.<uint> = Vector.<uint>(
         [0, 1, 2, 2, 3, 0]);
-
+    
     _vertexBuffer = _context3d.createVertexBuffer(vertexData.length/5, 5);
     _vertexBuffer.uploadFromVector(vertexData, 0, vertexData.length/5);
-
+    
     _indexBuffer = _context3d.createIndexBuffer(indexData.length);
     _indexBuffer.uploadFromVector(indexData, 0, indexData.length);
 }

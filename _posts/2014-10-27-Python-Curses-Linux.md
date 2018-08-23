@@ -4,19 +4,21 @@ comments: true
 excerpt:  标题略微有点大，就当做开篇吧。先把准备工作做个总结。
 title: Python Curses 服务器监控（内存）
 ---
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
+
 准备写点服务器相关的东西，这算是个开篇。先把准备工作做好，好的工作流才是王道。
 
-###工具
+### 工具
 
 > * SublimeText
 > * SFTP-SublimeText
 > * Python + Curses
 
-####SublimeText
+#### SublimeText
 
 这个就不用多讲了，主要用来Python编码。
 
-####SFTP-SublimeText 
+#### SFTP-SublimeText 
 
 插件[主页](http://wbond.net/sublime_packages/sftp)
 用法也很简单，只要在本地文件夹内配置`sftp-config.json`文件即可。
@@ -28,7 +30,7 @@ title: Python Curses 服务器监控（内存）
     
     // sftp, ftp or ftps
     "type": "sftp",
-
+    
     "save_before_upload": true,
     "upload_on_save": false,
     "sync_down_on_open": false,
@@ -53,7 +55,7 @@ title: Python Curses 服务器监控（内存）
     //"dir_permissions": "775",
     
     //"extra_list_connections": 0,
-
+    
     "connect_timeout": 30,
     //"keepalive": 120,
     //"ftp_passive_mode": true,
@@ -75,14 +77,14 @@ title: Python Curses 服务器监控（内存）
 
 配置好开发环境，就剩下码字了。
 
-###编码
+### 编码
 
-####Curses
+#### Curses
 
 Curses是一个能提供基于文本终端窗口功能的库。用它在终端窗口写一个记事本程序都是分分钟钟的事情😄~  
 更多关于Curses的内容，可查看[Linux Documentation Project’s NCURSES Programming How To](http://www.linux.org/docs/ldp/howto/NCURSES-Programming-HOWTO/index.html)
 
-####Python 脚本
+#### Python 脚本
 {% highlight python %}
 #-*- coding: utf-8 -*-
 #!/usr/bin/env python
@@ -123,11 +125,11 @@ def run():
     screen.addstr(1,1, "---------Memory----------", curses.color_pair(1))
     screen.addstr(1,30, "timestamp:  " + str(time.time()), curses.color_pair(2))
     column = 2
-
+    
     for (k,v) in  mem.items(): 
         screen.addstr(column, 1, k + ":" + str(v) + " kB")
         column += 1
-
+    
     screen.refresh()
 
 if __name__=='__main__': 

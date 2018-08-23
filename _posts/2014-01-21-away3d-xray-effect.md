@@ -22,7 +22,7 @@ xRay Effect 先来看张效果图：
 
 分三个步骤来完成这个效果。
 
-##第一步：正常渲染场景物件以及遮挡物
+## 第一步：正常渲染场景物件以及遮挡物
 
 在away3d里面对应的代码是  DefaultRenderer.as 的draw()方法  
 {% highlight as3 %}
@@ -34,7 +34,7 @@ drawRenderables(entityCollector.blendedRenderableHead, entityCollector, which);
 
 ![image](../images/wp-content/uploads/2014/01/step01-300x225.jpg)
 
-##第二步：渲染人物被遮挡的部分
+## 第二步：渲染人物被遮挡的部分
 
 ![image](../images/wp-content/uploads/2014/01/step02-300x225.jpg)
 
@@ -140,7 +140,7 @@ if(singlePassMat && singlePassMat.xRayMethod)
 
 SinglePassMaterialBase的xRayMethod属性是EffectMethodBase类型，就是我们自己扩展的xray的shader。在该博文最后会提供出代码。
 
-##第三步：正常渲染人物，就可以得到下面的效果
+## 第三步：正常渲染人物，就可以得到下面的效果
 
 ![image](../images/wp-content/uploads/2014/01/step03-300x225.jpg)
 
@@ -185,7 +185,7 @@ package copper3d.materials.methods
     import away3d.materials.compilation.ShaderRegisterElement;
     import away3d.materials.methods.EffectMethodBase;
     import away3d.materials.methods.MethodVO;
-
+    
     /**
      * xRay效果 
      * @author vancopper
@@ -267,7 +267,7 @@ package copper3d.materials.methods
             var temp1:ShaderRegisterElement = regCache.getFreeFragmentVectorTemp();
             var temp2:ShaderRegisterElement = regCache.getFreeFragmentVectorTemp();
             var code:String = "";
-            
+
 //          code += "nrm " + temp1 + ".xyz, " + _sharedRegisters.normalVarying + ".xyz \n" +
 //              "dp3 " + temp2 + ".a, " + targetReg + ".xyz, " + _sharedRegisters.projectionFragment + ".xyz \n" +
 //              "sat " + temp2 + ".a, " + temp2 + ".a \n" +

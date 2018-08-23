@@ -4,7 +4,10 @@ comments:
 excerpt: 
 tag: []
 title: 如何制作LEGO的拼装说明
+
 ---
+
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
 
 ![](../images/lego_01.jpeg)
 

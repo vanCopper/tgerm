@@ -6,7 +6,7 @@ tag: [Swift]
 title: (译）Start Developing iOS Apps(Swift)
 ---
 
-
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
 
 ### Getting Started
 

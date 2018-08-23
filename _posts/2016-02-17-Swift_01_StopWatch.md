@@ -4,7 +4,10 @@ comments: true
 excerpt:  终于要迈出编写App的第一步了
 tag: [Swift]
 title: Swift开篇
+
 ---
+
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
 
 ![](../images/StopWatch.gif)
 

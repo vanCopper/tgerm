@@ -4,7 +4,10 @@ comments: true
 excerpt:  
 tag: [life]
 title: 有些事我不得不说了
+
 ---
+
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
 
 ![](../images/programer.jpg)
 

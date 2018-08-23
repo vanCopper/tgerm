@@ -2,10 +2,10 @@
 title: Stage3D-HelloTriangle
 tag: [Stage3D]
 layout: post
----
-一个可见的例子可作为很好的切入点。从这篇开始会持续更新Stage3D的博文，也会放一些在[百度阅读](http://yuedu.baidu.com/partner/browse/profile?id=eb562d378e9951e79b892763&fr=index)。如果你愿意表示支持付费阅读，可以在上面购买。不购买也没关系，上面所有的文章均可在博客中找到。
 
-入正题：
+---
+
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
 
 本篇主要是通过简单例子理解相关概念以及基本的渲染流程。对于一些知识点，后面会展开讨论。
 
@@ -241,3 +241,5 @@ package
 >原创博文，转载请注明  
 >作者：vanCopper  
 >Blog: http://blog.as3er.com http://blog.copper3d.org
+
+```

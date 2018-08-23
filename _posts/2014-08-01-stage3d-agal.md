@@ -3,6 +3,8 @@ layout: post
 tag: [Stage3D]
 title: Stage3D-AGAL
 ---
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
+
 前两篇涉及到AGAL的地方，都直接略过了。这里详细理解一下。
 
 **AGAL(Adobe Graphics Assembly Language)**Adobe 图形汇编语言

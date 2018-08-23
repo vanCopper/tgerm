@@ -6,6 +6,8 @@ tag: []
 title: 制作人是什么鬼
 ---
 
+<span style="color: #ff6600;"><strong>原创博文，转载请声明</strong></span>
+
 ### 标题是唬人的
 
 标题是唬人的。为了写这个，所以今天没有技术文(unity3d)了。
