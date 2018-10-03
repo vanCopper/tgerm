@@ -44,13 +44,16 @@ var vertexSrc:String = "m44 op, va0, vc0\n" +
 3. 投影变换
 4. 视口变换
 
-#####1.视图变换
+##### 1.视图变换
+
 **视图变换**是我们应用的第一个变换，它主要是用来确定观察点位置，也可以理解为摄像机位置。需要注意的是，在进行其他任何变换之前必须先指定视图变换。
 
-#####2.模型变换
+##### 2.模型变换
+
 **模型变换**主要是对3D对象本身进行的移动，旋转，缩放操作。
 
-#####3.投影变换
+##### 3.投影变换
+
 **投影变换**建立了一个裁剪平面，用于确定哪些3D显示对象可以被看到。投影又分为：**正投影（平行投影）**和**透视投影**。
 
 ######正投影：几何图形会以指定的大小直接被映射到2D屏幕上，也就是没有近大远小的效果。  
@@ -73,8 +76,8 @@ _projectionmatrix = new PerspectiveMatrix3D();
 // 45 degrees FOV, 700/500 aspect ratio, 0.1=near, 100=far
 _projectionmatrix.perspectiveFieldOfViewRH(45.0, 700 / 500, 0.01, 100.0);
 </pre>
+##### 4.视口变换
 
-#####4.视口变换
 **视口变换**就是将最终变换后的结果映射到窗口上。这步操作，不需要我们去关注细节。
 
 所以我们为了显示3D场景，最终需要做的事情就是执行下面的这个几何变换：
@@ -136,28 +139,28 @@ private static var TextureClass:Class;
 
 public function TextureTest()
 {
-    super();
-    addEventListener(Event.ADDED_TO_STAGE, onAddToStage);
+​    super();
+​    addEventListener(Event.ADDED_TO_STAGE, onAddToStage);
 }
 
 private function onAddToStage(e:Event):void
 {
-    removeEventListener(Event.ADDED_TO_STAGE, onAddToStage);
-    if(this.stage.stage3Ds.length > 0)
-    {
-        _stage3d = this.stage.stage3Ds[0];
-        _stage3d.addEventListener(ErrorEvent.ERROR, onCreateContext3DError);
-        _stage3d.addEventListener(Event.CONTEXT3D_CREATE, onContext3DCreated);
-        _stage3d.requestContext3D(Context3DRenderMode.AUTO, Context3DProfile.STANDARD);
-    }
+​    removeEventListener(Event.ADDED_TO_STAGE, onAddToStage);
+​    if(this.stage.stage3Ds.length > 0)
+​    {
+​        _stage3d = this.stage.stage3Ds[0];
+​        _stage3d.addEventListener(ErrorEvent.ERROR, onCreateContext3DError);
+​        _stage3d.addEventListener(Event.CONTEXT3D_CREATE, onContext3DCreated);
+​        _stage3d.requestContext3D(Context3DRenderMode.AUTO, Context3DProfile.STANDARD);
+​    }
 }
 
 private function onContext3DCreated(event:Event):void
 {
-    initContext3D();
-    initBuffer();
-    initTexture();
-    initProgram();
+​    initContext3D();
+​    initBuffer();
+​    initTexture();
+​    initProgram();
 
     addEventListener(Event.ENTER_FRAME, render);
 }
@@ -167,14 +170,14 @@ private var _speed:Number = .02;
 private var _degrees:Number = 0;
 private function render(event:Event):void
 {
-    if(_t > .5) _speed = -.02;
-    if(_t < -.5) _speed = .02;
+​    if(_t > .5) _speed = -.02;
+​    if(_t < -.5) _speed = .02;
 
     _t += _speed;
     _degrees += 2.0;
     _modelMatrix.identity();
 //          _modelMatrix.appendTranslation(_t, 0, 1);
-    _modelMatrix.appendRotation(_degrees*1.0, Vector3D.Y_AXIS);
+​    _modelMatrix.appendRotation(_degrees*1.0, Vector3D.Y_AXIS);
 
     _cameraMatrix.identity();
     _cameraMatrix.appendTranslation(0, 0, -5);
@@ -194,15 +197,15 @@ private function render(event:Event):void
 
 private function onCreateContext3DError(event:ErrorEvent):void
 {
-    trace(event.text);
+​    trace(event.text);
 }
 
 private function initContext3D():void
 {
-    _context3d = _stage3d.context3D;
-    _stage3d.x = 50;
-    _stage3d.y = 50;
-    _context3d.configureBackBuffer(700, 500, 2);
+​    _context3d = _stage3d.context3D;
+​    _stage3d.x = 50;
+​    _stage3d.y = 50;
+​    _context3d.configureBackBuffer(700, 500, 2);
 
     _projectionmatrix = new PerspectiveMatrix3D();
     // 45 degrees FOV, 700/500 aspect ratio, 0.1=near, 100=far
@@ -216,14 +219,14 @@ private function initContext3D():void
 
 private function initBuffer():void
 {
-    var vertexData:Vector.<Number> = Vector.<Number>(
-        [
-            // x, y, z, u, v
-            -0.5, 0.5, 0, 0, 0,
-            0.5, 0.5, 0, 1, 0,
-            0.5, -0.5, 0, 1, 1,
-            -0.5, -0.5, 0, 0, 1
-        ]);
+​    var vertexData:Vector.<Number> = Vector.<Number>(
+​        [
+​            // x, y, z, u, v
+​            -0.5, 0.5, 0, 0, 0,
+​            0.5, 0.5, 0, 1, 0,
+​            0.5, -0.5, 0, 1, 1,
+​            -0.5, -0.5, 0, 0, 1
+​        ]);
 
     var indexData:Vector.<uint> = Vector.<uint>(
         [0, 1, 2, 2, 3, 0]);
@@ -237,18 +240,18 @@ private function initBuffer():void
 
 private function initTexture():void
 {
-    _texture = _context3d.createTexture(512, 512, Context3DTextureFormat.BGRA, true);
-    _texture.uploadFromBitmapData((new TextureClass() as Bitmap).bitmapData);
+​    _texture = _context3d.createTexture(512, 512, Context3DTextureFormat.BGRA, true);
+​    _texture.uploadFromBitmapData((new TextureClass() as Bitmap).bitmapData);
 }
 
 private function initProgram():void
 {
-    var vertexSrc:String = "m44 op, va0, vc0\n" +
-        "mov v0, va1\n";
-    var fragmentsrc:String = "tex ft0, v0, fs0 <2d, repeat, linear, nomip>\n" +
-        "mov oc ft0\n";
-    var shaderAssembler:AGALMiniAssembler = new AGALMiniAssembler();
-    _program3d = shaderAssembler.assemble2(_context3d, 2, vertexSrc, fragmentsrc);
+​    var vertexSrc:String = "m44 op, va0, vc0\n" +
+​        "mov v0, va1\n";
+​    var fragmentsrc:String = "tex ft0, v0, fs0 <2d, repeat, linear, nomip>\n" +
+​        "mov oc ft0\n";
+​    var shaderAssembler:AGALMiniAssembler = new AGALMiniAssembler();
+​    _program3d = shaderAssembler.assemble2(_context3d, 2, vertexSrc, fragmentsrc);
 
     _context3d.setVertexBufferAt(0, _vertexBuffer, 0,
         Context3DVertexBufferFormat.FLOAT_3);
