@@ -10,7 +10,7 @@ title: A Simple, Fast, and Effective Polygon Reduction Algorithm
 
 # A Simple, Fast, and Effective Polygon Reduction Algorithm
 
-![](../Images/rabit.gif)
+![](../images/rabit.gif)
 
 
 
