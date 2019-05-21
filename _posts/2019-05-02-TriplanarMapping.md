@@ -77,3 +77,6 @@ blend_weights  = blend_weights  / (blend_weights.x + blend_weights.y + blend_wei
 >
 > <https://www.ronja-tutorials.com/2018/05/11/triplanar-mapping.html>
 
+更多内容可关注公众号：
+
+![](../images/qrcode_yi.jpg)

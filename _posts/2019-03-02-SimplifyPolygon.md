@@ -117,3 +117,6 @@ private float ComputeEdgeCollapseCost(SimplifyVertex u, SimplifyVertex v)
 
 Paper中作者有提供C++的版本，Unity算法演示见源码。
 
+更多内容可关注公众号：
+
+![](../images/qrcode_yi.jpg)
