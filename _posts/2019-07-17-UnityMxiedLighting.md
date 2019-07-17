@@ -6,7 +6,7 @@ tag: [U3D]
 title: Unity Mixed Lighting
 ---
 
-[TOC]
+
 
 Unity中有三种灯光模式：Realtime Lighting，Mixed Lighting，Bake Lighting。
 
