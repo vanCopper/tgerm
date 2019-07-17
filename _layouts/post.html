@@ -96,40 +96,40 @@ $(document).ready(function() {
     //   return;
     // }
 
-    var newHtml = '<p class="md-toc-content">'
-    headers.each(function(i,item){
-    isToc = true;
-    var tag = $(item).get(0).localName;
-    var level = String(get_level(tag));
-    $(item).attr("id","wow"+level+""+i);
+    // var newHtml = '<p class="md-toc-content">'
+    // headers.each(function(i,item){
+    // isToc = true;
+    // var tag = $(item).get(0).localName;
+    // var level = String(get_level(tag));
+    // $(item).attr("id","wow"+level+""+i);
 
-    newHtml += '<span class="md-toc-item md-toc-h' + level + '"> <a class="md-toc-inner" href="#wow' + level + '' + i + '">'+ $(this).text()+'</a></span>';
-    // $("#toc").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
-    // $(".newh2").css("margin-left",0);
-    // $(".newh3").css("margin-left",20);
-    // $(".newh4").css("margin-left",40);
-    // $(".newh5").css("margin-left",60);
-    // $(".newh6").css("margin-left",80);
-    });
-    newHtml += '</p>';
-    $("#toc").append(newHtml);
-    // $('#toc').toc();
-    // $("h2,h3,h4,h5,h6").each(function(i,item){
-    //     var tag = $(item).get(0).localName;
-    //     $(item).attr("id","wow"+i);
-    //     $("#toc").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
-    //     $(".newh2").css("margin-left",0);
-    //     $(".newh3").css("margin-left",20);
-    //     $(".newh4").css("margin-left",40);
-    //     $(".newh5").css("margin-left",60);
-    //     $(".newh6").css("margin-left",80);
-    //   });
-    if(!isToc)
-    {
-      var divToc = document.getElementById("toc");
+    // newHtml += '<span class="md-toc-item md-toc-h' + level + '"> <a class="md-toc-inner" href="#wow' + level + '' + i + '">'+ $(this).text()+'</a></span>';
+    // // $("#toc").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
+    // // $(".newh2").css("margin-left",0);
+    // // $(".newh3").css("margin-left",20);
+    // // $(".newh4").css("margin-left",40);
+    // // $(".newh5").css("margin-left",60);
+    // // $(".newh6").css("margin-left",80);
+    // });
+    // newHtml += '</p>';
+    // $("#toc").append(newHtml);
+    // // $('#toc').toc();
+    // // $("h2,h3,h4,h5,h6").each(function(i,item){
+    // //     var tag = $(item).get(0).localName;
+    // //     $(item).attr("id","wow"+i);
+    // //     $("#toc").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
+    // //     $(".newh2").css("margin-left",0);
+    // //     $(".newh3").css("margin-left",20);
+    // //     $(".newh4").css("margin-left",40);
+    // //     $(".newh5").css("margin-left",60);
+    // //     $(".newh6").css("margin-left",80);
+    // //   });
+    // if(!isToc)
+    // {
+    //   var divToc = document.getElementById("toc");
 
-      divToc.parentNode.removeChild(divToc);
-    }
+    //   divToc.parentNode.removeChild(divToc);
+    // }
 });
 
 
@@ -161,7 +161,7 @@ $(document).ready(function() {
   </div><!-- /.image-wrap -->
 {% endif %}
 <!-- <div id="md-toc" class="md-toc"></div> -->
- <div class='md-toc' id='toc'></div>
+ <!-- <div class='md-toc' id='toc'></div> -->
 <div id="main" role="main">
 
   <div class="article-author-side">
