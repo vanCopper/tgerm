@@ -118,14 +118,14 @@ assets:
 paginate: 10
 
 # ------------ The following options are not recommended to be modified ------------------
-gist:
-  noscript: false
+# gist:
+#   noscript: false
 
-lsi: false
-safe: true
+# lsi: false
+# safe: true
 # source: [your repo's top level directory]
 incremental: false
-highlighter: rouge
+# highlighter: rouge
 
 kramdown:
   math_engine: mathjax
