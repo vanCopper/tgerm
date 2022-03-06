@@ -14,7 +14,7 @@ ActionScript3中提供了**矩阵**的类：[Matrix3D](http://help.adobe.com/zh_
 ![](../../images/Matrix3Delements.jpg)
 
 既然**矩阵**可以用来控制3D显示对象的位置等，我们就把**Texture**的例子修改一下。用**矩阵**来让显示对象动起来。
-可以先预览[Demo](../img/TextureTest.swf)
+
 
 需要修改部分代码来实现上面的效果：
 
