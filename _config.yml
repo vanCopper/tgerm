@@ -11,6 +11,7 @@ baseurl:              "/"
 permalink:   /:categories/:title/
 # markdown:    kramdown
 markdown_ext:  markdown,mkd,mkdn,md
+remote_theme: cotes2020/chirpy-starter
 
 highlighter: rouge
 markdown: kramdown
