@@ -1,28 +1,19 @@
-.sass-cache/
-.sass-cache/3dcb88f18351c927322d2cc35b1e190fe8aca8d4/typography.scssc
+# hidden files
+.*
+!.git*
+!.editorconfig
+!.nojekyll
+!.travis.yml
+!.husky
+
+# bundler cache
 _site
-_site/*
-_site/404.html
+vendor
+Gemfile.lock
 
-_site/CNote/index.html
+# rubygem
+*.gem
 
-_site/about/index.html
-
-_site/assets/css/main.css
-
-_site/feed.xml
-
-_site/index.html
-
-_site/posts/index.html
-
-_site/sitemap.xml
-
-_site/theme-setup/index.html
-
-code/sftp-config.json
-_sass/.Ulysses-Group.plist
-
-_sass/vendor/.Ulysses-Group.plist
-
-.Ulysses-Group.plist
+# npm dependencies
+node_modules
+package-lock.json
