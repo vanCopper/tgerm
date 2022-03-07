@@ -7,7 +7,7 @@
 # and doesn't have a custom domain.
 # baseurl: ''
 
-# repository: vanCopper/tgerm
+repository: vanCopper/tgerm
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
@@ -33,8 +33,8 @@ description: >-                        # used by seo meta and the atom feed
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
 
-# github:
-#   username: vanCopper             # change to your github username
+github:
+  username: vanCopper             # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
