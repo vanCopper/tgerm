@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "github-pages", "~> 225", group: :jekyll_plugins
+gem "github-pages", "~> 3.9.0", group: :jekyll_plugins
 
 group :test do
   gem "html-proofer", "~> 3.18"
