@@ -186,5 +186,5 @@ jekyll-archives:
     tag: /tags/:name/
     category: /categories/:name/
 safe: true
-github: [metadata]
 exclude: [vendor]
+github: [metadata]
