@@ -277,7 +277,6 @@ GEM
 
 PLATFORMS
   x86-mingw32
-  x86_64-linux
 
 DEPENDENCIES
   github-pages (~> 225)
