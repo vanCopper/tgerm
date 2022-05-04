@@ -15,3 +15,4 @@ permalink: /archive/
 </ul>
 <h2 class="c-archives__year" id="{{ next_year }}-ref">{{next_year}}</h2>
 <ul class="c-archives__list">{% endif %}{% endif %}{% endfor %}
+
