@@ -5,24 +5,8 @@
       url: "docs/copper/Notes"
 - title: "Unreal Engine Tech"
   url: "ue-tech"
-- title: "Unity Tech"
-  url: "unity-tech"
-  children:
-    - title: Features
-      url: "docs/getting-started#getting-started"
-    - title: Development
-      url: "docs/getting-started#development"
-    - title: Customization
-      url: "docs/getting-started#customization"
 - title: "Houdini Tech"
   url: "houdini-tech"
-  children:
-    - title: Quizzes
-      url: "docs/extras/example-quiz"
-    - title: Discussion Forum
-      url: "forum"
-    - title: Interactive Code
-      url: "docs/extras/interactive"
 - title: "Misc"
   url: "misc"
 - title: "About"
