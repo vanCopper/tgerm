@@ -1,11 +1,12 @@
 ---
 title: Notes
-tag: CopperEngine
+tag: 
+ - CopperEngine
 ---
 
 > CopperEngine 开发日志。记录一些零碎的知识点以及遇到的问题。
 
-### Static library vs. Dynamic library
+# Static library vs. Dynamic library
 
 ![image-20220504172817314](../../assets/img/StaticLibrary_vs._DynamicLibray_Compiler.png)
 
@@ -18,4 +19,6 @@ tag: CopperEngine
 
 1. 应用程序的包体会变大，如果你的应用中又包含多个可执行程序，最坏的情况是同一个库在不同的可执行程序中被包含了多次。
 2. 修改或升级库需要重新构建应用程序，这会增加编译以及部署成本。
+
+# __declspec dllexport & dllimport
 
