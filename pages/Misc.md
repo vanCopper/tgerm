@@ -17,4 +17,4 @@ permalink: /misc/
    <hr>
 {% endfor %}
 
-Want to see more? See the <a href="{{ site.baseurl }}/archive/">News Archive</a>.
+Want to see more? See the <a href="{{ site.baseurl }}/archive/">Archive</a>.
