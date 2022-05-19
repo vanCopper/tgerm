@@ -55,3 +55,28 @@ int __declspec(dllexport) add(int a, int b)
 int __declspec(dllimport) add(int a, int b)
 ```
 
+### Preprocessor Difinitions in Visual Studio
+
+在C/C++代码中，经常会看到：#include、#define等指令，这些以#开头的指令被称为预处理指令，预处理指令由预处理器（Preprocessor）操作。预处理指令会在源文件被编译之前先通过预处理器的处理：
+
+![image-20220519112320822](./Images/Notes/image-20220519112320822.png)
+
+预处理指令分类：
+
+1. 文件包含：#include 该指令有两种写法：
+   - `#include<math.h>`尖括号形式，预处理器会直接到系统目录对应的文件中搜索math.h文件，搜索不到则报错。系统文件提供的文件头一般使用该方式，而自定义的头文件不能采用这种方式。
+   - `#include"anther_math.h"`双引号形式，预处理器会先在当前工作目录下查找该文件，如果搜索不到再去系统目录下查找。所以一般自定义头文件一般使用这种形式，当然也可以使用尖括号形式，但浪费了不必要的搜索时间。
+2. 宏定义：包括定义宏#define和宏删除#undef
+3. 条件编译：#if，#elif，#else，#endif，#ifdef，#ifndef
+4. 特殊控制：ANSI C还定义了特殊作用的预处理指令如 ：`#error`，`#pragma`
+   - `#error`:使预处理器输出指定错误，通常用于调试程序
+   - `#pragma`:功能丰富的指令，有很多参数可选择，从而完成相应的特定操作。
+      - `#pragma once`:可以避免同一个头文件被包含多次
+      - `#prama pack(n)`:使用预处理器来设置内存按多少字节对齐，n为对齐系数：1、2、4、 8...
+5. 预定义的宏：
+   - `__LINE__`:编译后，包含了当前程序行在程序内的行号
+   - `__FILE__`:编译后，包含了当前程序的程序名
+
+在Visual Studio中预定义宏：
+
+![image-20220519224246071](./Images/Notes/image-20220519224246071.png)
