@@ -80,3 +80,56 @@ int __declspec(dllimport) add(int a, int b)
 在Visual Studio中预定义宏：
 
 ![image-20220519224246071](./Images/Notes/image-20220519224246071.png)
+
+### Scoped Enumeration vs. Unscoped Enumeration
+
+C++11新标准引入了**限定作用域的枚举类型（scoped enumeration）**。定义限定作用域的枚举类型的一般形式：
+
+```c++
+enum class InputType {Key, Mouse, Controller} // enum class 形式
+enum struct InputType {Key, Mouse, Controller} // enum struct 形式
+```
+
+而定义**不限定作用域的枚举类型（unscoped enumeration）**的一般形式
+
+```c++
+enum InputType {Key, Mouse, Controller} // 已命名的不限定作用域的枚举类型
+enum {Key, Mouse, Controller} // 未命名的不限定作用域的枚举类型
+```
+
+两者的区别：
+
+1. 作用域不同，限定作用域的枚举类型中枚举成员在枚举类型的作用域外是不可访问的，而不限定作用域的枚举类型的枚举成员是和枚举类型本身的作用域相同的：
+
+   ```C++
+   enum Color { Red, Green, Blue };                    // unscoped enumeration Color
+   enum Card_Error { Red, RedCard, GreenCard, YellowCard };    // 错误！重复定义了red，当前作用域下已在Color中定义了Red
+   enum Card_Correct { RedCard, GreenCard, YellowCard }; 		// 正确
+   
+   enum class Animal { Dog, Deer, Cat, Bird, Human };    // scoped enumeration class
+   enum class Mammal { Kangaroo, Deer, Human };       // Deer定义正确，枚举成员作于域不同
+   
+   int main(int argc, char** argv)
+   {
+       Color a = Red; // 正确：不限定作用域枚举类型的枚举成员Red位于有效作用域下
+       Animal b = Dog; // 错误：限定作用域枚举类型的枚举成员Dog不在当前作用域下
+       Animal c = Animal::Dog; //正确： 使用Animal的Dog枚举成员，类型也匹配
+   }
+   ```
+
+2. 限定作用域枚举类型不可以隐式的转换为其他类型或int
+
+   ```c++
+   int i = Color::Red; //正确： i = 0
+   int j = Animal::Dog; //错误：限定作用域的枚举类型不会进行隐式转换
+   ```
+
+更推荐使用限定作用域枚举类型，多数编译器默认都会检查Enum的声明，会给出warning提示你使用scoped enum:
+
+![image-20220520122913036](./Images/Notes/image-20220520122913036.png)
+
+限定作用域枚举类型解决了以下常见问题：
+
+1. 不限定作用域枚举类型更容易导致命名冲突问题，而限定作用域枚举类型可有效避免。
+2. 不限定作用域枚举类型无法指定成员类型，这会带来安全问题，而限定作用域枚举类型则可以显式的指定类型，当不指定时，默认为int类型。
+3. 不限定作用域枚举类型的前置声明需要指定成员类型：`enum intValues : unsigned long long;`，而限定作用域枚举类型则不需要：`enum class Animal;`
