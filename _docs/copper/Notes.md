@@ -55,7 +55,7 @@ int __declspec(dllexport) add(int a, int b)
 int __declspec(dllimport) add(int a, int b)
 ```
 
-### Preprocessor Difinitions in Visual Studio
+## Preprocessor Difinitions in Visual Studio
 
 在C/C++代码中，经常会看到：#include、#define等指令，这些以#开头的指令被称为预处理指令，预处理指令由预处理器（Preprocessor）操作。预处理指令会在源文件被编译之前先通过预处理器的处理：
 
@@ -81,7 +81,7 @@ int __declspec(dllimport) add(int a, int b)
 
 ![image-20220519224246071](./Images/Notes/image-20220519224246071.png)
 
-### Scoped Enumeration vs. Unscoped Enumeration
+## Scoped Enumeration vs. Unscoped Enumeration
 
 C++11新标准引入了**限定作用域的枚举类型（scoped enumeration）**。定义限定作用域的枚举类型的一般形式：
 
