@@ -5,6 +5,9 @@
       url: "docs/copper/Notes"
 - title: "Unreal Engine Tech"
   url: "ue-tech"
+  children:
+    - title: What exactly does Smooth Frame Rate do?
+      url: "docs/ue-tech/SmoothFrameRate"
 - title: "Houdini Tech"
   url: "houdini-tech"
 - title: "Misc"
