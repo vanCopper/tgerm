@@ -8,8 +8,6 @@
   children:
     - title: What exactly does Smooth Frame Rate do?
       url: "docs/ue-tech/SmoothFrameRate"
-- title: "Houdini Tech"
-  url: "houdini-tech"
 - title: "Misc"
   url: "misc"
 - title: "About"
