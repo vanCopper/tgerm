@@ -8,6 +8,8 @@
   children:
     - title: What exactly does Smooth Frame Rate do?
       url: "docs/ue-tech/SmoothFrameRate"
+    - title: Component Visualizers
+      url: "docs/ue-tech/ComponentVisualizers"
 - title: "Misc"
   url: "misc"
 - title: "About"
