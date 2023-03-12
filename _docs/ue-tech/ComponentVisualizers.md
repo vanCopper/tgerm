@@ -24,7 +24,7 @@ FTransform RespawnLocation;
 
 **Component Visualizers**的使用需要在Editor Module环境下，所以首先需要在项目能新建一个Editor模块。关于模块的创建以及配置可以参考官方Wiki：[Creating an Editor Module](https://unrealcommunity.wiki/creating-an-editor-module-x64nt5g3)
 
-## Visual Aiming Point
+## Aiming Point
 
 假设我们有一个巨型怪，怪可以被玩家使用枪械瞄准射击，并且有多个部位可瞄准（瞄准时需要有自动吸附）。也就是怪身体上存在多个可用于瞄准且吸附的Point，我们暂且定义为**Aiming Point** 。一般情况下我们可能会使用指定的骨骼来作为Aiming Point，但使用骨骼可能会导致瞄准时由于骨骼本身的运动导致吸附枪线抖动。所以我们选择在DamageComponent（ActorComponent）上配置多个Vector作为Aiming Point。
 
@@ -61,7 +61,7 @@ public:
 #include "CoreMinimal.h"
 #include "ComponentVisualizer.h"
 
-class MASTERYEDITOR_API DamageComponentVisualizer : public FComponentVisualizer
+class DamageComponentVisualizer : public FComponentVisualizer
 {
 public:
 	DamageComponentVisualizer();
@@ -97,4 +97,24 @@ void FMasteryEditorModule::StartupModule()
 
 完成这一步后，当我们在BlueprintEditor下选中**DamageComponent**时，引擎会使用我们注册的**FComponentVisualizer**。
 
-## Find 
+由于我们需要编辑多个**FVector**类型的AimingPoint，所以我们需要在**DamgeComponentVisualizer**中分别定义要可视化的属性和当前正在编辑的AimingPoint:
+
+```C++
+private:
+	FProperty* AimingPointProperty;
+	int32 SelectedPointIndex;
+```
+
+初始化：
+
+```C++
+FDamageComponentVisualizer::FDamageComponentVisualizer():AimingPointProperty(nullptr),
+															SelectedPointIndex(0)
+{
+	AimingPointProperty = FindFProperty<FProperty>(UDamageComponent::StaticClass(),
+	                                               "AimingPoint");
+}
+```
+
+## Hit Proxies
+
