@@ -112,9 +112,183 @@ FDamageComponentVisualizer::FDamageComponentVisualizer():AimingPointProperty(nul
 															SelectedPointIndex(0)
 {
 	AimingPointProperty = FindFProperty<FProperty>(UDamageComponent::StaticClass(),
-	                                               "AimingPoint");
+	                                               "AimingPoints");
 }
 ```
 
 ## Hit Proxies
+
+由于我们需要在蓝图编辑器下的View中编辑AimingPoint，所以我们需要实现自己的Hit Proxies以便能够自定AimingPoint的显示以及操作数据的修改等。
+
+在**DamageComponentVisualizer.h**中声明：
+
+```c++
+struct HDamageComponentVisProxy : public HComponentVisProxy
+{
+	DECLARE_HIT_PROXY();
+	HDamageComponentVisProxy(const UActorComponent* InComponent, EHitProxyPriority InPriority = HPP_Wireframe)
+		: HComponentVisProxy(InComponent, InPriority)
+	{}
+
+	virtual EMouseCursor::Type GetMouseCursor() override
+	{
+		return EMouseCursor::Crosshairs;
+	}
+};
+
+struct HInteractiveSocketProxy: public HDamageComponentVisProxy
+{
+	DECLARE_HIT_PROXY();
+
+	HInteractiveSocketProxy(const UActorComponent* InComponent, int32 InKeyIndex)
+		: HDamageComponentVisProxy(InComponent)
+		, SocketIndex(InKeyIndex)
+	{}
+
+	int32 SocketIndex;
+
+	virtual EMouseCursor::Type GetMouseCursor() override
+	{
+		return EMouseCursor::Crosshairs;
+	}
+};
+```
+
+在**DamageComponentVisualizer.cpp**中使用引擎内置的宏实现：
+
+```c++
+IMPLEMENT_HIT_PROXY(HDamageComponentVisProxy, HComponentVisProxy);
+IMPLEMENT_HIT_PROXY(HInteractiveSocketProxy, HDamageComponentVisProxy);
+```
+
+## Drawing
+
+在DrawVisualization函数中使用DrawWireSphere绘制出AimingPoint:
+
+```c++
+void FDamageComponentVisualizer::DrawVisualization(const UActorComponent* Component, const FSceneView* View,
+	FPrimitiveDrawInterface* PDI)
+{
+	if(const UDamageComponent* DamageComponent = Cast<UDamageComponent>(Component))
+	{
+		for(int i = 0; i < DamageComponent->AimingPoints.Num(); ++i)
+		{
+			const FVector DamageComponentLocation = FVector::ZeroVector;
+			const float DamageSphereRadius = 5.0f;
+			const FColor DamageSphereColor = FColor::Red;
+
+			PDI->SetHitProxy(new HInteractiveSocketProxy(Component, i));
+			DrawWireSphere(PDI, DamageComponent->AimingPoints[i], DamageSphereColor, DamageSphereRadius, 16, SDPG_Foreground);
+			PDI->SetHitProxy(nullptr);
+		}
+	}
+}
+```
+
+![image-20230404210732507](Images/ComponentVisualizers/image-20230404210732507.png)
+
+但这里只是绘制出了AimingPoint所在的位置，如果现在想改变AimingPoint的位置，那么只能通过Detail面板上直接修改其XYZ的值来实现。我们希望能更便捷的修改AimingPoint的位置，这就是为什么前面我们新增了HitProxies相关实现。
+
+## Receiving Clicks
+
+在VisProxyHandleClick函数中处理当前被选中的AimingPoint，以便在后续的编辑中提供数据：
+
+```c++
+bool FDamageComponentVisualizer::VisProxyHandleClick(FEditorViewportClient* InViewportClient,
+	HComponentVisProxy* VisProxy, const FViewportClick& Click)
+{
+	bool bEditing = false;
+	const UDamageComponent* DamageComponent = CastChecked<const UDamageComponent>(VisProxy->Component.Get());
+	DamageComponentPropertyPath = FComponentPropertyPath(DamageComponent);
+	
+	if(VisProxy && VisProxy->Component.IsValid())
+	{
+		if(HInteractiveSocketProxy* SocketProxy = (HInteractiveSocketProxy*)(VisProxy))
+		{
+			SelectedPointIndex = SocketProxy->SocketIndex;
+			bEditing = true;
+		}
+	}
+	else
+	{
+		SelectedPointIndex = INDEX_NONE;
+	}
+
+	return bEditing;
+}
+```
+
+1. 使用PropertyPath记录当前编辑的是哪一个DamageComponent。
+2. 使用SelectedPointIndex记录当前编辑的是哪一个AimingPoint。
+
+## Set Widget Location
+
+当我们确定了要编辑的AimingPoint就需要在其所在位置给一编辑用的Widget并显示在其对应位置上，这时我们只需要实现GetWidgetLocation函数即可：
+
+```c++
+bool FDamageComponentVisualizer::GetWidgetLocation(const FEditorViewportClient* ViewportClient,
+	FVector& OutLocation) const
+{
+	UDamageComponent* EditedDamageComponent = Cast<UDamageComponent>(DamageComponentPropertyPath.GetComponent());
+	if(IsValid(EditedDamageComponent) && SelectedPointIndex != INDEX_NONE)
+	{
+			OutLocation = EditedDamageComponent->AimingPoints[SelectedPointIndex];
+			return true;
+	}
+	return false;
+}
+```
+
+另外为了能够在BlueprintEditor中编辑AimingPoint我们还需要实现IsVisualizingArchetype函数，使其使用Owner的Archetype:
+
+```c++
+bool FDamageComponentVisualizer::IsVisualizingArchetype() const
+{
+	UActorComponent* Component = DamageComponentPropertyPath.GetComponent();
+	return (Component && Component->GetOwner() && FActorEditorUtils::IsAPreviewOrInactiveActor(Component->GetOwner()));
+}
+```
+
+![image-20230404213157444](Images/ComponentVisualizers/image-20230404213157444.png)
+
+到目前为止，当我们选中某个需要编辑的AimingPoint时，会显示Crosshair以便我们对其位置进行编辑。
+
+## Handle Input Delta
+
+我们还剩最后一步：只需要响应Crosshair的操作并将数据保存即可。
+
+实现HandleInputDelta:
+
+```c++
+bool FDamageComponentVisualizer::HandleInputDelta(FEditorViewportClient* ViewportClient, FViewport* Viewport,
+	FVector& DeltaTranslate, FRotator& DeltalRotate, FVector& DeltaScale)
+{
+	if(!DeltaTranslate.IsZero())
+	{
+		UDamageComponent* EditedDamageComponent = Cast<UDamageComponent>(DamageComponentPropertyPath.GetComponent());
+		if(IsValid(EditedDamageComponent) && SelectedPointIndex != INDEX_NONE && SelectedPointIndex < EditedDamageComponent->AimingPoints.Num())
+		{
+			EditedDamageComponent->AimingPoints[SelectedPointIndex] += DeltaTranslate;
+			NotifyComponentModified();
+			return true;
+		}
+	}
+	
+	return false;
+}
+```
+
+修改后需要通知组件：
+
+```c++
+void FDamageComponentVisualizer::NotifyComponentModified()
+{
+	if(DamageComponentPropertyPath.IsValid())
+	{
+		NotifyPropertyModified(DamageComponentPropertyPath.GetComponent(), AimingPointProperty);
+	}
+	
+	GEditor->RedrawLevelEditingViewports(true);
+}
+```
 
