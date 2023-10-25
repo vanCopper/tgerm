@@ -10,6 +10,11 @@
       url: "docs/ue-tech/SmoothFrameRate"
     - title: Component Visualizers
       url: "docs/ue-tech/ComponentVisualizers"
+- title: "Unity Engine Tech"
+  url: "unity-tech"
+  children:
+    - title: MapGen
+      url: "docs/unity-tech/MapGen"
 - title: "Misc"
   url: "misc"
 - title: "About"
