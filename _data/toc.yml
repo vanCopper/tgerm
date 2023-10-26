@@ -17,6 +17,8 @@
       url: "docs/unity-tech/MapGen"
     - title: GPU Instancing
       url: "docs/unity-tech/GPUInstancing"
+    - title: SimplifyPolygon
+      url: "docs/unity-tech/SimplifyPolygon"
 - title: "Misc"
   url: "misc"
 - title: "About"
