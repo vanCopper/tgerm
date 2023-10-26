@@ -19,6 +19,8 @@
       url: "docs/unity-tech/GPUInstancing"
     - title: SimplifyPolygon
       url: "docs/unity-tech/SimplifyPolygon"
+    - title: TriplanarMapping
+      url: "docs/unity-tech/TriplanarMapping"
 - title: "Misc"
   url: "misc"
 - title: "About"
