@@ -30,7 +30,7 @@ Unity 提供了**Static Batching**和**Dynamic Batching**两种方式来优化�
 
   **Dynamic Batching**在降低Draw Call的同时会导致额外的CPU性能消耗，所以仅在合批操作的性能消耗小于不合批，**Dynamic Batching**才有意义。
 
-#### 1.1 动态合批
+## 1.1 动态合批
 
 1. 新建一个球体的Prefab用于测试
 
@@ -81,7 +81,7 @@ Unity 提供了**Static Batching**和**Dynamic Batching**两种方式来优化�
 
    可以看到这时只有8次DrawCall(Batches)，4994个Cube被动态合批了。FPS也从0.6fps上升到了75fps。
 
-#### 1.2 GPU Instancing 测试
+## 1.2 GPU Instancing 测试
 
 ​	GPU Instancing 并不是默认开启的。Shader需要特殊处理才能支持GPU Instancing。Unity的standard shader中是有开启GPU Instancing选项的，如果是自定义Shader，就需要自己去处理。我们先来用Sphere的渲染来测试下，5000个Sphere不开启GUP Instancing的情况：
 
@@ -99,7 +99,7 @@ Unity 提供了**Static Batching**和**Dynamic Batching**两种方式来优化�
 
 5000个Sphere被合批至10个DrawCall中处理了。被Instancing的Draw Call都被标记为了Draw Mesh(instanced)了。
 
-#### 1.3 什么是GPU Instancing
+## 1.3 什么是GPU Instancing
 
 GPU Instancing是指由GPU和图形API支持的，用一个DrawCall同时绘制多个具有相同网格物体的技术。假如现在有一个包含大量模型的场景，而这些模型的网格数据都一样，不同的仅仅是世界空间下坐标不同。如果按照正常的渲染流程，DrawCall次数是和物件数量相同的，随着物件数量的上升CPU往GPU上传的数据就会越来越多，很快就会遇到性能的瓶颈。
 
@@ -131,7 +131,7 @@ GPU Instancing技术并不是总能提高性能的，如果场景中有大量使
 * 需要把Shader改成Instanced的版本
 * 当所有条件均满足的情况下，Instancing是自动进行的，并且优先级高于 Static/Dynamic Batching
 
-#### 2.1 让自定义Shader支持Instancing
+## 2.1 让自定义Shader支持Instancing
 
 首先我们新建一个简单的Shader：
 
@@ -217,7 +217,7 @@ Shader "Copper/LightingShader"
 
 观察Stats发现渲染处理了5000个Sphere，最终合批为10次DrawCall。但我们却只在场景中观察到了10个Sphere。为什么5000个Sphere在渲染，而场景中只有10个Sphere？
 
-#### 2.2 UNITY_VERTEX_INPUT_INSTANCE_ID
+## 2.2 UNITY_VERTEX_INPUT_INSTANCE_ID
 
 上面的例子中5000个Sphere渲染，而只在场景中看到10个Sphere是因为GPU在处理Instancing的时候如果没有为每个Instancing指定唯一的**Instance_id**，那么GPU就会默认使用第一个。所以同一批次的Sphere都会出现在同一位置。我们修改一下Shader再来测试：
 
@@ -258,7 +258,7 @@ Unity中Instancing相关的指令都定义在`Unity安装目录\Editor\Data\CGIn
 
 **UNITY_SETUP_INSTANCE_ID**：这个宏必须在Vertex Shader或Fragment Shader的一开始就调用，只有调用了这个宏以后，才可以在Shader中通过全局的InstanceID来访问到结构体数据。
 
-#### 2.3 GPU Instancing Batch Size
+## 2.3 GPU Instancing Batch Size
 
 ![](./images/shader_03.png)
 
@@ -304,7 +304,7 @@ OpenGl平台中UBO的大小通常只有ConstantBuffer大小的四分之一。
 
 **这里需要注意的是 UNITY_VERTEX_INPUT_INSTANCE_ID 使用的ConstantBuffer/UBO是单独的`UnityInstancing_PerDraw0`**
 
-#### 2.4 UNITY_DEFINE_INSTANCED_PROP
+## 2.4 UNITY_DEFINE_INSTANCED_PROP
 
 修改一下Shader和脚本，为Shader添加一个颜色属性，在脚本中动态改变这个颜色值。
 
