@@ -3,6 +3,8 @@
   children:
     - title: Notes
       url: "docs/copper/Notes"
+    - title: Integrating RenderDoc for CopperEngine
+      url: "docs/copper/Integrating_RenderDoc"
 - title: "Unreal Engine Tech"
   url: "ue-tech"
   children:
