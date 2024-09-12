@@ -12,6 +12,8 @@
       url: "docs/ue-tech/SmoothFrameRate"
     - title: Component Visualizers
       url: "docs/ue-tech/ComponentVisualizers"
+    - title: TriggerX Notes
+      url: "docs/ue-tech/TriggerXNotes"
 - title: "Unity Engine Tech"
   url: "unity-tech"
   children:
